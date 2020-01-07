@@ -7,7 +7,7 @@ class strainer():
 
     def get_strain(self, search_type, query):
         url='http://strainapi.evanbusse.com/{}/strains/search/'.format(self.key)
-        if(search_type == 'All'):
+        if(search_type == 'all'):
             url = url+'all'
         elif(search_type == 'name'):
             url = url+'name/{}'.format(query)

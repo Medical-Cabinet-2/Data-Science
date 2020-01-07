@@ -10,6 +10,10 @@ def create_app():
     def root():
         """Base view."""
         
-        return render_template('base.html')
+        return 'Root stuff'
     
+    @app.route('/search', methods=['POST'])
+    def search():
+        return 'Search Function'
+
     return app
