@@ -1,4 +1,5 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request
+import json
 from .StrainAPI import Strainer
 
 def create_app():
@@ -23,7 +24,7 @@ def create_app():
     def search():
         """Useful route, calls the get_strain method"""
         data = request.get_json()
-        api.get_strain(data)
-        return data
+        result = api.get_strain(data)
+        return json.dumps({'id':result})
 
     return app
