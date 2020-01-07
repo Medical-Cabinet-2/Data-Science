@@ -12,6 +12,6 @@ class Strainer():
         Using machine learning model to predict a strain for a user
         :param data: The data to be used to predict a strain
         """
-        prediction = self.model.predict(data)
+        prediction = self.model.predict([[data]])
 
         return prediction
