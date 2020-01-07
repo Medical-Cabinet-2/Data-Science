@@ -1,1 +1,1 @@
-web: gunicorn SCAPP:APP -t 120
+web: gunicorn StrainAPI:APP -t 120
