@@ -4,8 +4,8 @@ from sklearn.linear_model import LinearRegression
 
 class Strainer():
     def __init__(self):
-        self.filename = "dummy_linear_regression.pkl"
-        self.model = pickle.load(open(self.filename, 'rb'))
+        url = 'https://github.com/Medical-Cabinet-2/Data-Science/blob/DNason/StrainAPI/Dummy_linear_regression.pkl?raw=true'
+        self.model = pickle.loads(requests.request("GET", url).content)
 
     def get_strain(self, data):
         """
