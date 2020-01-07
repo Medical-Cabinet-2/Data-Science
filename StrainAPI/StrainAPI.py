@@ -4,7 +4,7 @@ from sklearn.linear_model import LinearRegression
 
 class Strainer():
     def __init__(self):
-        self.filename = "Dummy_linear_regression.sav"
+        self.filename = "Dummy_linear_regression.pkl"
         self.model = pickle.load(open(self.filename, 'rb'))
 
     def get_strain(self, data):
