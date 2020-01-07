@@ -12,6 +12,7 @@ pandas = "*"
 seaborn = "*"
 matplotlib = "*"
 gunicorn = "*"
+sklearn = "*"
 
 [requires]
 python_version = "3.7"
