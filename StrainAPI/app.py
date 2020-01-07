@@ -1,5 +1,5 @@
 from flask import Flask, request, jsonify
-from .StrainAPI import strainer
+from .StrainAPI import Strainer
 
 def create_app():
     app = Flask(__name__)
@@ -8,12 +8,21 @@ def create_app():
 
     @app.route('/')
     def root():
-        return 'Root stuff'
+        """Default route, doesnt do anything"""
+        msg = """
+        Default route for the api
+
+        Use /search to determine a strain for the user
+        pass a json object with the data and it will return
+        a json object with the result. 
+        """
+        return msg
     
     @app.route('/search', methods=['POST'])
     def search():
+        """Useful route, calls the get_strain method"""
         data = request.get_json()
-
+        api.get_strain(data)
         return data
 
     return app
