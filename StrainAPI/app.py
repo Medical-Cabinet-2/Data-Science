@@ -6,6 +6,7 @@ def create_app():
 
     api = Strainer()
 
+
     @app.route('/')
     def root():
         """Default route, doesnt do anything"""

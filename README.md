@@ -1,1 +1,2 @@
 # Data-Science
+The information here is to contribute to the Medical Cabinet 2 application build. This application is designed to help patients seeking medical treatment through the use of cannabis. Different strains of cannabis will have different effects. The goal of this application is to ensure that patients are able to pick the correct strain for their ailment to ensure the best possible patient outcomes.
