@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, request, jsonify
 from .StrainAPI import strainer
 
 def create_app():
@@ -8,12 +8,12 @@ def create_app():
 
     @app.route('/')
     def root():
-        """Base view."""
-        
         return 'Root stuff'
     
     @app.route('/search', methods=['POST'])
     def search():
-        return 'Search Function'
+        data = request.get_json()
+
+        return data
 
     return app
