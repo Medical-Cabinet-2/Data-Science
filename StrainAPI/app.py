@@ -24,7 +24,7 @@ def create_app():
     def search():
         """Useful route, calls the get_strain method"""
         data = request.get_json()
-        result = api.get_strain(data)
+        result = api.get_strain(data['input'])
         return json.dumps({'id':result})
 
     return app
