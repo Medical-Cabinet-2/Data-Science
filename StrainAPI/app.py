@@ -1,10 +1,10 @@
 from flask import Flask, render_template, request
-from .StrainAPI import strainer
+from .StrainAPI import Strainer
 
 def create_app():
     app = Flask(__name__)
 
-    api = strainer('QsLigX4')
+    api = Strainer('QsLigX4')
 
     @app.route('/')
     def root():
