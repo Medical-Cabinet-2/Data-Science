@@ -1,6 +1,6 @@
 import requests
 import pickle
-#from sklearn
+from sklearn.linear_model import LinearRegression
 
 class Strainer():
     def __init__(self):
