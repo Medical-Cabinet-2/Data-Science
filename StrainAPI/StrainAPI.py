@@ -1,22 +1,14 @@
 import requests
+import pickle
+from sklearn
 
-class strainer():
-
+class Strainer():
     def __init__(self, key):
-        self.key = key
+        self.filename = '(INSERT FILENAME)'
+        self.model = pickle.load(open(self.filename, 'rb'))
 
     def get_strain(self, search_type, query):
-        url='http://strainapi.evanbusse.com/{}/strains/search/'.format(self.key)
-        if(search_type == 'all'):
-            url = url+'all'
-        elif(search_type == 'name'):
-            url = url+'name/{}'.format(query)
-        elif(search_type == 'race'):
-            url = url+'race/{}'.format(query)
-        elif(search_type == 'effect'):
-            url = url+'effect/{}'.format(query)
-        elif(search_type == 'flavor'):
-            url = url+'flavor/{}'.format(query)
+        model.predict
 
         print(url)
         return requests.request("GET", url)

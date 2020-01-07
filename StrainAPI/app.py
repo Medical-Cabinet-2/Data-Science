@@ -4,7 +4,7 @@ from .StrainAPI import strainer
 def create_app():
     app = Flask(__name__)
 
-    api = strainer('QsLigX4')
+    api = Strainer()
 
     @app.route('/')
     def root():
