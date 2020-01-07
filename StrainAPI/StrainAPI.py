@@ -1,6 +1,6 @@
 import requests
 
-class strainer():
+class Strainer():
 
     def __init__(self, key):
         self.key = key
