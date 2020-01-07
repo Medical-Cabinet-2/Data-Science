@@ -1,10 +1,12 @@
 from flask import Flask, request, jsonify
-from .StrainAPI import strainer
+from .StrainAPI import Strainer
+
 
 def create_app():
     app = Flask(__name__)
 
     api = Strainer()
+
 
     @app.route('/')
     def root():
