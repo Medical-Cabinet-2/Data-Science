@@ -5,7 +5,7 @@ from .StrainAPI import Strainer
 def create_app():
     app = Flask(__name__)
 
-    #api = Strainer()
+    api = Strainer()
 
 
     @app.route('/')
