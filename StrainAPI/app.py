@@ -12,11 +12,17 @@ def create_app():
     def root():
         """Default route, doesnt do anything"""
         msg = """
-        Default route for the api
+        Default route for the api\n
 
         Use /search to determine a strain for the user
         pass a json object with the data and it will return
-        a json object with the result. 
+        a json object with the result.\n
+        As of 10:53 AM lambda time, the /search function\n
+        will accept an input in the form of a json payload\n
+        in the form of {'input': (int)} and return a json\n
+        payload in the form of {'id': (int)+1}. Integration\n
+        of the actual ML Algorithm is in progress and should\n
+        be completed by the end of the day (01/08/2020)
         """
         return msg
     
@@ -25,7 +31,6 @@ def create_app():
         """Useful route, calls the get_strain method"""
         data = json.loads(request.get_json())
         result = api.get_strain(data)
-        print(result)
         return json.dumps({'id':result[0]})
 
     return app

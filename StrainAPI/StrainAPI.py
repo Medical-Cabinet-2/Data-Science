@@ -1,11 +1,12 @@
 import requests
 import pickle
 from sklearn.linear_model import LinearRegression
+import os
 
 class Strainer():
     def __init__(self):
-        self.filename = './dummy_linear_regression.pkl'
-        self.model = pickle.loads(open(self.filename, 'rb'))
+        self.filename = os.getcwd()+'/StrainAPI/models/dummy_linear_regression.pkl'
+        self.model = pickle.load(open(self.filename, 'rb'))
 
     def get_strain(self, data):
         """
@@ -13,7 +14,7 @@ class Strainer():
         :param data: The data to be used to predict a strain
         """
         vals = []
-        for val in data:
+        for val in data.values():
             vals.append(val)
         prediction = self.model.predict([vals])
 
