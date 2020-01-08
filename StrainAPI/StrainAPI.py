@@ -7,6 +7,7 @@ class Strainer():
     def __init__(self):
         self.filename = '../models/Dummy_linear_regression.pkl'
         print(os.getcwd())
+        print(os.listdir())
         self.model = pickle.loads(open(self.filename, 'rb'))
 
     def get_strain(self, data):
