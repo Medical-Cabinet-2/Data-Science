@@ -12,17 +12,19 @@ def create_app():
     def root():
         """Default route, doesnt do anything"""
         msg = """
+        <pre>
         Default route for the api\n
 
         Use /search to determine a strain for the user
         pass a json object with the data and it will return
-        a json object with the result.\n
-        As of 10:53 AM lambda time, the /search function\n
-        will accept an input in the form of a json payload\n
-        in the form of {'input': (int)} and return a json\n
-        payload in the form of {'id': (int)+1}. Integration\n
-        of the actual ML Algorithm is in progress and should\n
+        a json object with the result.
+        As of 10:53 AM lambda time, the /search function
+        will accept an input in the form of a json payload
+        in the form of {'input': (int)} and return a json
+        payload in the form of {'id': (int)+1}. Integration
+        of the actual ML Algorithm is in progress and should
         be completed by the end of the day (01/08/2020)
+        </pre>
         """
         return msg
     
