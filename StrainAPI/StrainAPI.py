@@ -4,7 +4,7 @@ from sklearn.linear_model import LinearRegression
 
 class Strainer():
     def __init__(self):
-        self.url = 'https://github.com/Medical-Cabinet-2/Data-Science/blob/DNason/StrainAPI/Dummy_linear_regression.pkl?raw=true'
+        self.url = '/Dummy_linear_regression.pkl'
         self.model = pickle.loads(requests.request("GET", self.url).content)
 
     def get_strain(self, data):
@@ -13,7 +13,7 @@ class Strainer():
         :param data: The data to be used to predict a strain
         """
         vals = []
-        for val in data:
+        for val in data.values():
             vals.append(val)
         prediction = self.model.predict([vals])
 
