@@ -1,6 +1,7 @@
 from flask import Flask, request, render_template
 import json
 from StrainAPI.nlp_model import Predictor
+import spacy
 
 def create_app():
     app = Flask(__name__)
@@ -40,5 +41,17 @@ def create_app():
         result = api.predict(user_input_text=user_text, size= in_size)
 
         return json.dumps({'id':result[0]})
+
+    def get_lemmas(self, text):
+        """Return the Lemmas"""
+        nlp = spacy.load("en_core_web_md")
+        lemmas = []
+        doc = nlp(text)
+    
+        for token in doc: 
+            if ((token.is_stop == False) and (token.is_punct == False)) and (token.pos_!= 'PRON'):
+                lemmas.append(token.lemma_)
+    
+        return lemmas
 
     return app
