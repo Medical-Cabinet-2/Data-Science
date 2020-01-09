@@ -26,5 +26,14 @@ class Predictor():
         # vectorized request, based on the vectorized dataset (vocab).
         strain_ids = self.nn.kneighbors(request_vec.todense(), n_neighbors=size)[1][0]
         return strain_ids
-        
+
+    def get_lemmas(text):
+        """Return the Lemmas"""
+        lemmas = []
+        doc = nlp(text)
     
+        for token in doc: 
+            if ((token.is_stop == False) and (token.is_punct == False)) and (token.pos_ != 'PRON'):
+                lemmas.append(token.lemma_)
+    
+        return lemmas
