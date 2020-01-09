@@ -7,7 +7,6 @@ def create_app():
 
     api = Strainer()
 
-
     @app.route('/')
     def root():
         """Default route, renders documentation.html"""
@@ -17,6 +16,11 @@ def create_app():
     def s():
         """Renders the search function documentation"""
         return render_template('search.html')
+
+    @app.route('/test.html')
+    def t():
+        """Renders the test file"""
+        return render_template('test.html')
     
     @app.route('/search', methods=['POST'])
     def search():
