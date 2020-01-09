@@ -1,6 +1,7 @@
 from flask import Flask, request
 import json
 from .StrainAPI import Strainer
+from .models import Strain
 
 def create_app():
     app = Flask(__name__)
@@ -25,7 +26,7 @@ def create_app():
         be completed by the end of the day (01/08/2020)
         """
         return msg
-    
+
     @app.route('/search', methods=['POST'])
     def search():
         """Useful route, calls the get_strain method"""
@@ -34,3 +35,17 @@ def create_app():
         return json.dumps({'id':result[0]})
 
     return app
+
+#a function to use ML Model in puts and return the row information
+
+def strain_sql(indices):
+    """this function should take indices (the five from the ML model) \n
+    and return the information contained in those rows"""
+    strain = Strain.query.filter(Strain.index == index).one()#one index
+    strains = Strain.query.filter(Strain.index.in_(indices)).one()#for all indices
+    return strains
+
+
+
+if __name__ == '__main__':
+    app.run()
