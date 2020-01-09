@@ -1,7 +1,7 @@
 import requests
 import pickle
-from StrainAPI.nlp_model import Predictor
-import os
+
+
 
 class Strainer():
     def __init__(self):

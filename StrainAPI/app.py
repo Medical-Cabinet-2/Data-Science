@@ -1,11 +1,11 @@
 from flask import Flask, request, render_template
 import json
-from .StrainAPI import Strainer
+from StrainAPI.nlp_model import Predictor
 
 def create_app():
     app = Flask(__name__)
 
-    api = Strainer()
+    api = Predictor()
 
     @app.route('/')
     def root():
@@ -25,8 +25,20 @@ def create_app():
     @app.route('/search', methods=['POST'])
     def search():
         """Useful route, calls the get_strain method"""
+        # Accesses the json payload from the http request
         data = json.loads(request.get_json())
-        result = api.get_strain(data)
+
+        types = data['type']
+        flavor= data['flavor']
+        effects= data['effects']
+        description = data['desc']
+        in_size = 3
+
+        user_text = types+" "+flavor+" "+effects+" "+description
+
+        # Generate the result from the machine learning api
+        result = api.predict(user_input_text=user_text, size= in_size)
+
         return json.dumps({'id':result[0]})
 
     return app
