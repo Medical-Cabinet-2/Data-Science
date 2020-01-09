@@ -9,10 +9,9 @@ verify_ssl = true
 flask = "*"
 requests = "*"
 pandas = "*"
-seaborn = "*"
-matplotlib = "*"
 gunicorn = "*"
 sklearn = "*"
+spacy = "*"
 
 [requires]
 python_version = "3.7"

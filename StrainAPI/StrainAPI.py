@@ -1,12 +1,11 @@
 import requests
 import pickle
-from sklearn.linear_model import LinearRegression
+from StrainAPI.nlp_model import Predictor
 import os
 
 class Strainer():
     def __init__(self):
-        self.filename = os.getcwd()+'/StrainAPI/models/dummy_linear_regression.pkl'
-        self.model = pickle.load(open(self.filename, 'rb'))
+        self.model = Predictor()
 
     def get_strain(self, data):
         """

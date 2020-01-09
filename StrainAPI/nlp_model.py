@@ -36,10 +36,10 @@ class Predictor():
         X,y = self.split_data(df_clean)
         
         # create tokenizer object
-        tokenizer = Tokenizer(nlp.vocab)
+        self.tokenizer = Tokenizer(self.nlp.vocab)
         text = df_clean["combined_text"]
      
-        predictions_text = transform_fit(text,user_input_text,size)
+        predictions_text = self.transform_fit(text,user_input_text,size)
         return predictions_text
 
     def load_data(self):
@@ -78,12 +78,12 @@ class Predictor():
     
     def tokenize(self,doc):
         """Return the tokens"""
-        return [token.text for token in tokenizer(doc)]
+        return [token.text for token in self.tokenizer(doc)]
 
     def get_lemmas(self,text):
         """Return the Lemmas"""
         lemmas = []
-        doc = nlp(text)
+        doc = self.nlp(text)
     
         for token in doc: 
             if ((token.is_stop == False) and (token.is_punct == False)) and (token.pos_!= 'PRON'):
@@ -93,7 +93,7 @@ class Predictor():
     
     def transform_fit(self,text,user_input_text,size):
         # Instantiate vectorizer object
-        tfidf = TfidfVectorizer(tokenizer=get_lemmas, min_df=0.025, max_df=.98, ngram_range=(1,2))
+        tfidf = TfidfVectorizer(tokenizer=self.get_lemmas, min_df=0.025, max_df=.98, ngram_range=(1,2))
 
         # Create a vocabulary and get word counts per document
         dtm = tfidf.fit_transform(text) # Similiar to fit_predict
