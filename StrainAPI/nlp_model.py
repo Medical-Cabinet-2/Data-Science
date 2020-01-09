@@ -1,5 +1,6 @@
 # Path and File Libraries
 import pickle
+import os
 import pandas as pd
 import numpy as np
 import spacy
@@ -14,6 +15,7 @@ from sklearn.neighbors import NearestNeighbors
 class Predictor():
     def __init__(self):
         # Load in the pickled model
+        print(os.getcwd())
         self.nn = pickle.load(open("./models/nn_1.pkl", "rb"))
         self.tfidf = pickle.load(open("./models/tfidf_1.pkl", "rb"))
 
