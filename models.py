@@ -5,7 +5,7 @@ app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////tmp/test.db'
 
 
-DB = SQLAlchemy(app)
+DB = SQLAlchemy()
 
 class Strain(DB.Model):
     """Strain with details"""
