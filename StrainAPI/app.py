@@ -27,6 +27,10 @@ def create_app():
         """Renders the search function documentation"""
         return render_template('search.html')
 
+    @app.route('/getdata')
+    def getdata():
+        return Strain.query.all()
+
     @app.route('/refresh')
     def refresh():
         """Refreshes the SQL Database with the merged strain dataset"""
