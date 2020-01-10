@@ -32,7 +32,7 @@ def create_app():
         strains = Strain.query.all()
         output = {}
         for x,y in zip(strains, range(0,len(strains))):
-            output[y] = x
+            output[y] = x.__repr__()
         return output
 
     @app.route('/refresh')
