@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, jsonify
 import json
 from StrainAPI.nlp_model import Predictor
 
@@ -37,8 +37,7 @@ def create_app():
 
         # Generate the result from the machine learning api
         result = api.predict(user_input_text=user_text, size= in_size)
-        print(result)
 
-        return json.dumps({'id':result[0]})
+        return jsonify(result=str(result))
             
     return app
