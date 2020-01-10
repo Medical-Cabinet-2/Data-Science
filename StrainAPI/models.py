@@ -2,6 +2,14 @@ from flask_sqlalchemy import SQLAlchemy
 
 DB = SQLAlchemy()
 
+DB.drop_all()
+DB.create_all()
+
+url = 'https://raw.githubusercontent.com/DNason1999/simple_repository/master/df_merged.csv'
+df = pd.read_csv(url)
+
+df.to_sql('Strain', con=DB)
+
 class Strain(DB.Model):
     """Strain with details"""
     id = DB.Column(DB.BigInteger, primary_key=True)
