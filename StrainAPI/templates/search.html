@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Method: Search</title>
+    </head>
+
+    <body>
+        <h1>Search Function Documentation</h1>
+        <h2>/search</h2>
+        <pre>
+          The search function is used to access the machine learning
+          model for a prediction of the input values. The request body 
+            parameters are expected to be in a json payload    
+        </pre>
+          <h4>Request Body Params</h4>
+          <table style="display: table,;">
+            <tr>
+                <th>Name</th>
+                <th>Data Type</th>
+                <th>Required/optional</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td>input</td>
+                <td>Integer</td>
+                <td>Required</td>
+                <td>The input value</td>
+            </tr>
+          </table>
+          <h3>Request Example</h3>
+          <img src="{{url_for('static', filename='request_example.PNG')}}" alt="request example">
+          <pre>
+              In this example the url is the web address followed
+              by /search
+              The json payload is {'input':10}
+              the request is made to the website with the 'POST' Method
+          </pre>
+          <h3>Response</h3>
+          <div class="tab">
+              <button class="tablinks" onclick="change(event, 'text')">Info</button>
+              <button class="tablinks" onclick="change(event, 'img')">Image</button>
+          </div>
+
+          <div id="text" class="tabcontent" id="defaultOpen">
+              <h3>response format </h3>
+              <pre>
+                  The response will be in a json payload. The format
+                  will be as follows:
+              </pre>
+              <table style="border: 1px solid rgb(0, 0, 0);">
+                  <tr>
+                      <th>Key</th>
+                      <th>Key Data Type</th>
+                      <th>Value Data Type</th>
+                  </tr>
+                  <tr>
+                      <td>'id'</td>
+                      <td>string</td>
+                      <td>Integer</td>
+                  </tr>
+              </table>
+          </div>
+          <div id="img" class="tabcontent" style="display:none">
+              <h3>image format</h3>
+              <img src="{{url_for('static', filename='response.PNG')}}" alt="reponse example">
+          </div>
+        <script>
+            // Get the element with id="defaultOpen" and click on it
+            document.getElementById("defaultOpen").click();
+        </script>
+        <script>
+          function change(evt, tabname) {
+            // Declare all variables
+            var i, tabcontent, tablinks;
+
+            // Get all elements with class="tabcontent" and hide them
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+              tabcontent[i].style.display = "none";
+            }
+          
+            // Get all elements with class="tablinks" and remove the class "active"
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+              tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+          
+            // Show the current tab, and add an "active" class to the button that opened the tab
+            document.getElementById(tabname).style.display = "block";
+            evt.currentTarget.className += " active";
+          }
+        </script>
+      </body>
+</html>
