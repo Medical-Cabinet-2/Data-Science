@@ -1,20 +1,15 @@
 from flask_sqlalchemy import SQLAlchemy
+import pandas as pd
 
 DB = SQLAlchemy()
 
-DB.drop_all()
-DB.create_all()
-
-url = 'https://raw.githubusercontent.com/DNason1999/simple_repository/master/df_merged.csv'
-df = pd.read_csv(url)
-
-df.to_sql('Strain', con=DB)
-
 class Strain(DB.Model):
     """Strain with details"""
-    id = DB.Column(DB.BigInteger, primary_key=True)
-    strain = DB.Column(DB.Text, nullable=False)
-    types = DB.Column(DB.Text, nullable=False)
+    index = DB.Column(DB.Integer, primary_key=True)
+    Strain = DB.Column(DB.Text, nullable=False)
+    Type = DB.Column(DB.Text, nullable=False)
+    Rating = DB.Column(DB.Float, nullable=True)
+    Description = DB.Column(DB.Text, nullable=True)
     flavors = DB.Column(DB.Text, nullable=False)
     medical = DB.Column(DB.Text, nullable=False)
     positive = DB.Column(DB.Text, nullable=False)
@@ -22,13 +17,18 @@ class Strain(DB.Model):
 
     def __repr__(self):
         output = {
-            'id':self.id,
-            'name':self.strain,
-            'type':self.types,
+            'id':self.index,
+            'name':self.Strain,
+            'type':self.Type,
+            'rate':self.Rating,
+            'desc':self.Description,
             'flavor':self.flavors,
             'medical':self.medical,
             'positive':self.positive,
             'negative':self.negative
         }
         return output
+
+    def __str__(self):
+        return self.__repr__()
 
