@@ -1,12 +1,6 @@
 # Path and File Libraries
 import pickle
 import os
-import pandas as pd
-import numpy as np
-import spacy
-
-from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.neighbors import NearestNeighbors
 
 ###################
 ##BUILD PREDICTOR##
