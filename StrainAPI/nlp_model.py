@@ -14,17 +14,10 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 class Predictor():
     def __init__(self):    
         # Load in the pickled model
-        self.nn = pickle.load(open("./models/nn_1.pkl", "rb"))
-        self.tfidf = pickle.load(open("./models/tfidf_1.pkl", "rb"))
-        # self.pars = pickle.load(open("./models/pars.pkl", "rb"))
-        # self.vocab = pickle.load(open("./models/vocab.pkl", "rb"))
-        # self.idf = pickle.load(open("./models/idf.pkl", "rb"))
-        # self.pars['tokenizer']=get_lemmas
-        # self.tfidf = TfidfVectorizer(self.pars)
-        # self.tfidf.vocabulary_ = self.vocab
-        # self.tfidf.idf_ = self.idf
-        #self.nn = pickle.load(open(os.getcwd()+"/StrainAPI/models/nn_1.pkl", "rb"))
-        #self.tfidf = pickle.load(open(os.getcwd()+"/StrainAPI/models/tfidf_1.pkl", "rb"))
+        #self.nn = pickle.load(open("./models/nn_1.pkl", "rb"))
+        #self.tfidf = pickle.load(open("./models/tfidf_1.pkl", "rb"))
+        self.nn = pickle.load(open(os.getcwd()+"/StrainAPI/models/nn_1.pkl", "rb"))
+        self.tfidf = pickle.load(open(os.getcwd()+"/StrainAPI/models/tfidf_1.pkl", "rb"))
 
     def predict(self,user_input_text,size=5):
         # Create vector from request string
