@@ -6,13 +6,13 @@ import pandas as pd
 def create_app():
     app = Flask(__name__)
 
-    #Create instance of the predictor class (handles loading of ML model)
+    # Create instance of the predictor class (handles loading of ML model)
     api = Predictor()
 
-    #add config for database
+    # Add config for database
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite3'
 
-    #stop tracking modifications on sqlalchemy config
+    # Stop tracking modifications on sqlalchemy config
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
     DB.init_app(app)
@@ -37,11 +37,11 @@ def create_app():
         # Create an index column
         df = df.reset_index()
 
-        #Remove all tables in the sql database
+        # emove all tables in the sql database
         DB.drop_all()
-        #Insert dataframe into sql database as table 'Strain'
+        # Insert dataframe into sql database as table 'Strain'
         df.to_sql(name='Strain', con=DB.engine, index=False)
-        #Commit the database changes
+        # Commit the database changes
         DB.session.commit()
 
         #Return 200 as a status reponsse
@@ -58,7 +58,7 @@ def create_app():
             request.args.get('effects')+" "+
             request.args.get('desc')
         )
-        #Define the size request
+        # Define the size request
         in_size = int(request.args.get('size'))
 
         # Generate the result from the machine learning api
@@ -72,16 +72,16 @@ def create_app():
         return output
 
     def get_strain(ids, size):
-        #Create an empty dictionary to return
+        # Create an empty dictionary to return
         results = {}
 
-        #Loop through all IDs recieved from the predict function in search()
+        # Loop through all IDs recieved from the predict function in search()
         for x,index in zip(ids, range(0,size)):
-            #Create a base result with {"id":"x"} where x is the current strain index
+            # Create a base result with {"id":"x"} where x is the current strain index
             sub_result = {"id":str(x)}
             # Query the database for the strain index and add it to the dict
             sub_result['data'] = Strain.query.filter(Strain.index==int(x)).first().__repr__()
-            #Add the sub_result to the main results dictionary
+            # Add the sub_result to the main results dictionary
             results['{}'.format(index)] = sub_result
 
         # Return the results in a dictionary
