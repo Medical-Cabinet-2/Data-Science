@@ -29,7 +29,11 @@ def create_app():
 
     @app.route('/getdata')
     def getdata():
-        return Strain.query.all()
+        strains = Strain.query.all()
+        output = {}
+        for x,y in zip(strains, range(0,len(strains)):
+            output[y] = x
+        return output
 
     @app.route('/refresh')
     def refresh():
